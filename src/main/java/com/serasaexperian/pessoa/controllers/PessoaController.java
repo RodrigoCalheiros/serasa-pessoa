@@ -2,14 +2,12 @@ package com.serasaexperian.pessoa.controllers;
 
 import com.serasaexperian.pessoa.dtos.request.PessoaRequestDto;
 import com.serasaexperian.pessoa.dtos.response.PessoaResponseDto;
-import com.serasaexperian.pessoa.models.PessoaModel;
 import com.serasaexperian.pessoa.services.PessoaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
