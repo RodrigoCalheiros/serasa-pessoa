@@ -13,7 +13,7 @@ public class EstadoService {
     @Autowired
     EstadoRepository estadoRepository;
 
-    public EstadoModel findBySigla(String sigla) {
+    public EstadoModel findBySigla(final String sigla) {
         return estadoRepository.findOneBySigla(sigla);
     }
 }

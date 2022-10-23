@@ -15,13 +15,12 @@ public class ScoreController {
 
     final ScoreService scoreService;
 
-
     public ScoreController(ScoreService scoreService) {
         this.scoreService = scoreService;
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveScore(@RequestBody @Valid ScoreRequestDto scoreRequestDto) {
+    public ResponseEntity<Object> saveScore(@RequestBody @Valid final ScoreRequestDto scoreRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(scoreService.save(scoreRequestDto));
     }
 

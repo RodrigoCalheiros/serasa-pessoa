@@ -23,10 +23,10 @@ public class AfinidadeModel implements Serializable {
     @Column(columnDefinition = "uuid")
     private UUID id;
 
-    @Column(nullable = false, length = 20, unique = true)
+    @Column(nullable = false, length = 20)
     private String regiao;
 
-    @OneToMany
+    @ManyToMany
     private List<EstadoModel> estados = new ArrayList<>();
 
 }

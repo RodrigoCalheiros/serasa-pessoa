@@ -40,6 +40,9 @@ public class PessoaModel implements Serializable {
     @Column(nullable = false, length = 20)
     private String estado;
 
-    @Column(nullable = false, length = 20)
-    private String regiao;
+    @ManyToOne
+    private ScoreModel score;
+
+    @ManyToOne
+    private AfinidadeModel afinidade;
 }

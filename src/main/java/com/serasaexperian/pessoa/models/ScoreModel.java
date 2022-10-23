@@ -20,7 +20,7 @@ public class ScoreModel implements Serializable {
     @Column(columnDefinition = "uuid")
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String descricao;
 
     @Column(name = "inicial", nullable = false)

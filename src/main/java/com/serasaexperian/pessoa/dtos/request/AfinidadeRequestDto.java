@@ -1,4 +1,4 @@
-package com.serasaexperian.pessoa.dtos;
+package com.serasaexperian.pessoa.dtos.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class AfinidadeDto {
+public class AfinidadeRequestDto {
 
     //TODO validação se a região já existe
     @NotBlank

@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface EstadoRepository extends JpaRepository<EstadoModel, UUID> {
 
-    EstadoModel findOneBySigla(String sigla);
+    EstadoModel findOneBySigla(final String sigla);
 }

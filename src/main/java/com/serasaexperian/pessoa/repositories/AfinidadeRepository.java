@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface AfinidadeRepository extends JpaRepository<AfinidadeModel, UUID> {
+    AfinidadeModel findOneByRegiao(final String regiao);
 }
