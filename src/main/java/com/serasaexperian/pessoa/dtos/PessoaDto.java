@@ -12,25 +12,25 @@ import javax.validation.constraints.Size;
 public class PessoaDto {
 
     @NotBlank
-    @Size(max = 70)
+    @Size(min=1, max = 70)
     private String nome;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min=1, max = 20)
     private String telefone;
 
     @Min(value = 0)
     private Integer idade;
 
     @NotBlank
-    @Size(max = 30)
+    @Size(min=1, max = 30)
     private String cidade;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min = 1, max = 20)
     private String estado;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min=1, max = 20)
     private String regiao;
 }

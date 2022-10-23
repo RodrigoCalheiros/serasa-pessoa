@@ -16,8 +16,10 @@ public class PessoaModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    //https://github.com/spring-projects/spring-data-jpa/issues/2590
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid")
     private UUID id;
 
     @Column(nullable = false)
