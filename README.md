@@ -1,6 +1,6 @@
 # serasa-score
 
-##Geração dos arquivos private_key.der e public_key.der
+#Geração dos arquivos private_key.der e public_key.der
 
 openssl genrsa -out private_key.pem 2048
 
