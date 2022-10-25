@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ScoreService {
 
@@ -20,7 +22,7 @@ public class ScoreService {
         return modelToResponseDto(scoreRepository.save(scoreModel));
     }
 
-    public ScoreModel findOneByScoreRange(final Integer score){
+    public Optional<ScoreModel> findOneByScoreRange(final Integer score){
         return scoreRepository.findOneByScoreRange(score);
     }
 

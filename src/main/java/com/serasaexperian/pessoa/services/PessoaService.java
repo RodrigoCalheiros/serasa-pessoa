@@ -4,10 +4,13 @@ import com.serasaexperian.pessoa.dtos.request.PessoaRequestDto;
 import com.serasaexperian.pessoa.dtos.response.PessoaResponseDto;
 import com.serasaexperian.pessoa.models.AfinidadeModel;
 import com.serasaexperian.pessoa.models.PessoaModel;
+import com.serasaexperian.pessoa.models.ScoreModel;
 import com.serasaexperian.pessoa.repositories.PessoaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -36,8 +39,20 @@ public class PessoaService {
 
         pessoaModel.setDataInclusao(LocalDateTime.now(ZoneId.of("UTC")));
 
-        pessoaModel.setScore(scoreService.findOneByScoreRange(pessoaRequestDto.getScore()));
-        pessoaModel.setAfinidade(afinidadeService.findByRegiao(pessoaRequestDto.getRegiao()));
+        Optional<ScoreModel> scoreModelOptional = scoreService.findOneByScoreRange(pessoaRequestDto.getScore());
+        if (scoreModelOptional.isPresent()) {
+            pessoaModel.setScore(scoreModelOptional.get());
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Score não cadastrado.");
+        }
+
+        Optional<AfinidadeModel> afinidadeModelOptional = afinidadeService.findByRegiao(pessoaRequestDto.getRegiao());
+        if (afinidadeModelOptional.isPresent()){
+            pessoaModel.setAfinidade(afinidadeModelOptional.get());
+        } else {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Região não cadastrada.");
+        }
 
         return pessoaRepository.save(pessoaModel);
     }
