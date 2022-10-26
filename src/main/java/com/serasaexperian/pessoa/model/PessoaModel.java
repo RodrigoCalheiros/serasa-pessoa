@@ -1,4 +1,4 @@
-package com.serasaexperian.pessoa.models;
+package com.serasaexperian.pessoa.model;
 
 import lombok.Getter;
 import lombok.Setter;

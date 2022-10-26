@@ -1,6 +1,6 @@
 package com.serasaexperian.pessoa.repository;
 
-import com.serasaexperian.pessoa.models.ScoreModel;
+import com.serasaexperian.pessoa.model.ScoreModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

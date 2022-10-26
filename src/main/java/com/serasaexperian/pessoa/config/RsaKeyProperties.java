@@ -1,11 +1,9 @@
 package com.serasaexperian.pessoa.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import java.nio.file.Files;
+import java.io.InputStream;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -21,16 +19,16 @@ public class RsaKeyProperties {
     private String privateKeyPath;
 
     public PublicKey getPublicKey() throws Exception{
-        Resource resource = new ClassPathResource(this.publicKeyPath);
-        byte[] keyBytes = Files.readAllBytes(resource.getFile().toPath());
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(this.publicKeyPath);
+        byte[] keyBytes = inputStream.readAllBytes();
         X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
         KeyFactory kf = KeyFactory.getInstance("RSA");
         return kf.generatePublic(spec);
     }
 
     public PrivateKey getPrivateKey() throws Exception {
-        Resource resource = new ClassPathResource(this.privateKeyPath);
-        byte[] keyBytes = Files.readAllBytes(resource.getFile().toPath());
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(this.privateKeyPath);
+        byte[] keyBytes = inputStream.readAllBytes();
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory kf = KeyFactory.getInstance("RSA");
         return kf.generatePrivate(spec);

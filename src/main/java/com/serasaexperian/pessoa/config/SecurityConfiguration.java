@@ -6,10 +6,8 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import com.serasaexperian.pessoa.controllers.AuthController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,7 +30,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SecurityConfiguration.class);
     private final RsaKeyProperties rsaKeyProperties;
 
     public SecurityConfiguration(RsaKeyProperties rsaKeyProperties) {
@@ -52,7 +49,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable())
+                .cors().and().csrf().disable()
                 .authorizeRequests(auth -> auth.anyRequest().authenticated())
                 .antMatcher("/api/**")
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
@@ -74,7 +71,7 @@ public class SecurityConfiguration {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));;
         return new NimbusJwtEncoder(jwks);
     }
 

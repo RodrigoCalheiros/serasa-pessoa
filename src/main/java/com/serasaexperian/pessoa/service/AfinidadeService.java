@@ -2,8 +2,8 @@ package com.serasaexperian.pessoa.service;
 
 import com.serasaexperian.pessoa.dto.request.AfinidadeRequestDto;
 import com.serasaexperian.pessoa.dto.response.AfinidadeResponseDto;
-import com.serasaexperian.pessoa.models.AfinidadeModel;
-import com.serasaexperian.pessoa.models.EstadoModel;
+import com.serasaexperian.pessoa.model.AfinidadeModel;
+import com.serasaexperian.pessoa.model.EstadoModel;
 import com.serasaexperian.pessoa.repository.AfinidadeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +34,11 @@ public class AfinidadeService {
         BeanUtils.copyProperties(afinidadeRequestDto, afinidadeModel);
         afinidadeModel.getEstados().addAll(
                 afinidadeRequestDto.getEstados().stream().map( estado -> {
-                            Optional<EstadoModel> estadoModelOptional = estadoService.findBySigla(estado);
+                            Optional<EstadoModel> estadoModelOptional = estadoService.findOneBySigla(estado);
                             if (estadoModelOptional.isPresent()) {
                                 return estadoModelOptional.get();
                             } else {
-                                throw new ResponseStatusException(HttpStatus.CONFLICT, "Estado não cadastrado");
+                                throw new ResponseStatusException(HttpStatus.CONFLICT, String.format("Estado '%s' não cadastrado", estado));
                             }
                         }).collect(Collectors.toList()
                 )

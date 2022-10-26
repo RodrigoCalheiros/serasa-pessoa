@@ -1,10 +1,9 @@
 package com.serasaexperian.pessoa.repository;
 
-import com.serasaexperian.pessoa.models.EstadoModel;
+import com.serasaexperian.pessoa.model.EstadoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,5 +11,4 @@ import java.util.UUID;
 public interface EstadoRepository extends JpaRepository<EstadoModel, UUID> {
 
     Optional<EstadoModel> findOneBySigla(final String sigla);
-    List<EstadoModel> findBySiglaIn(final List<String> siglas);
 }

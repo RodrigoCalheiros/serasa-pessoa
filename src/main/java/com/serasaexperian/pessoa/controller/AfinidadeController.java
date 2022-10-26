@@ -13,7 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/afinidade")
 public class AfinidadeController {
 
@@ -36,7 +35,4 @@ public class AfinidadeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(afinidadeService.save(afinidadeRequestDto));
     }
 
-    private void validateAfinidade(final AfinidadeRequestDto afinidadeRequestDto){
-
-    }
 }

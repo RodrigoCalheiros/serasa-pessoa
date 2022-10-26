@@ -2,7 +2,7 @@ package com.serasaexperian.pessoa.service;
 
 import com.serasaexperian.pessoa.dto.request.ScoreRequestDto;
 import com.serasaexperian.pessoa.dto.response.ScoreResponseDto;
-import com.serasaexperian.pessoa.models.ScoreModel;
+import com.serasaexperian.pessoa.model.ScoreModel;
 import com.serasaexperian.pessoa.repository.ScoreRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

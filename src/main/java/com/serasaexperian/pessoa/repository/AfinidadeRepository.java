@@ -1,6 +1,6 @@
 package com.serasaexperian.pessoa.repository;
 
-import com.serasaexperian.pessoa.models.AfinidadeModel;
+import com.serasaexperian.pessoa.model.AfinidadeModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

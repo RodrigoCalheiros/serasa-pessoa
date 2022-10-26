@@ -2,9 +2,9 @@ package com.serasaexperian.pessoa.service;
 
 import com.serasaexperian.pessoa.dto.request.PessoaRequestDto;
 import com.serasaexperian.pessoa.dto.response.PessoaResponseDto;
-import com.serasaexperian.pessoa.models.AfinidadeModel;
-import com.serasaexperian.pessoa.models.PessoaModel;
-import com.serasaexperian.pessoa.models.ScoreModel;
+import com.serasaexperian.pessoa.model.AfinidadeModel;
+import com.serasaexperian.pessoa.model.PessoaModel;
+import com.serasaexperian.pessoa.model.ScoreModel;
 import com.serasaexperian.pessoa.repository.PessoaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,8 @@ public class PessoaService {
 
     @Autowired
     PessoaRepository pessoaRepository;
-
     @Autowired
     ScoreService scoreService;
-
     @Autowired
     AfinidadeService afinidadeService;
 

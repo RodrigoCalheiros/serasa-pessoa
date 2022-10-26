@@ -1,4 +1,4 @@
-package com.serasaexperian.pessoa.services;
+package com.serasaexperian.pessoa.service;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,10 +12,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.stream.Collectors;
 
 @Service
-public class TokenService {
+public class TokenService2 {
+
     private final JwtEncoder encoder;
 
-    public TokenService(JwtEncoder encoder) {
+    public TokenService2(JwtEncoder encoder) {
         this.encoder = encoder;
     }
 

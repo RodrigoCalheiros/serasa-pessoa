@@ -3,12 +3,13 @@ package com.serasaexperian.pessoa.service;
 
 import com.serasaexperian.pessoa.dto.request.AfinidadeRequestDto;
 import com.serasaexperian.pessoa.dto.response.AfinidadeResponseDto;
-import com.serasaexperian.pessoa.models.AfinidadeModel;
-import com.serasaexperian.pessoa.models.EstadoModel;
+import com.serasaexperian.pessoa.model.AfinidadeModel;
+import com.serasaexperian.pessoa.model.EstadoModel;
 import com.serasaexperian.pessoa.repository.AfinidadeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
@@ -26,13 +27,11 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class AfinidadeServiceTest {
-
     @Mock
     private AfinidadeRepository repository;
-
     @Mock
     private EstadoService estadoService;
-
+    @InjectMocks
     private AfinidadeService afinidadeService;
 
     private AfinidadeModel afinidadeModel;
@@ -41,20 +40,19 @@ public class AfinidadeServiceTest {
 
     private UUID id = UUID.randomUUID();
     private String regiao = "Sudeste";
-    private List<String> estados = Arrays.asList("RJ", "SP");
+    private String sigla = "SP";
+    private List<String> estados = Arrays.asList(sigla);
 
     @BeforeEach
     void setUp()
     {
-        this.afinidadeService = new AfinidadeService(this.repository, this.estadoService);
-
-        this.afinidadeModel = new AfinidadeModel();
-        this.afinidadeModel.setId(id);
-        this.afinidadeModel.setRegiao(this.regiao);
-
         this.estadoModel = new EstadoModel();
         this.estadoModel.setId(UUID.randomUUID());
-        this.estadoModel.setSigla("SP");
+        this.estadoModel.setSigla(this.sigla);
+
+        this.afinidadeModel = new AfinidadeModel();
+        this.afinidadeModel.setId(this.id);
+        this.afinidadeModel.setRegiao(this.regiao);
         this.afinidadeModel.getEstados().add(this.estadoModel);
 
     }
@@ -62,7 +60,7 @@ public class AfinidadeServiceTest {
     @Test
     void saveSucesso() {
         when(repository.save(any(AfinidadeModel.class))).thenReturn(this.afinidadeModel);
-        when(estadoService.findBySigla(anyString())).thenReturn(Optional.of(this.estadoModel));
+        when(estadoService.findOneBySigla(anyString())).thenReturn(Optional.of(this.estadoModel));
 
         AfinidadeResponseDto afinidadeResponseDto = afinidadeService.save(AfinidadeRequestDto.builder().regiao(this.regiao).estados(this.estados).build());
 
@@ -72,13 +70,13 @@ public class AfinidadeServiceTest {
 
     @Test
     void saveErrorEstadoNaoCadastrado() {
-        when(estadoService.findBySigla(anyString())).thenReturn(Optional.empty());
+        when(estadoService.findOneBySigla(anyString())).thenReturn(Optional.empty());
 
         ResponseStatusException responseStatusException = assertThrows(ResponseStatusException.class, () -> {
             afinidadeService.save(AfinidadeRequestDto.builder().regiao(this.regiao).estados(this.estados).build());
         });
         assertEquals(responseStatusException.getStatus(), HttpStatus.CONFLICT);
-        assertEquals(responseStatusException.getReason(), "Estado não cadastrado");
+        assertEquals(responseStatusException.getReason(), String.format("Estado '%s' não cadastrado", this.sigla));
     }
 
     @Test
