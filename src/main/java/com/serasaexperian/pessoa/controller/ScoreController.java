@@ -1,7 +1,7 @@
-package com.serasaexperian.pessoa.controllers;
+package com.serasaexperian.pessoa.controller;
 
-import com.serasaexperian.pessoa.dtos.request.ScoreRequestDto;
-import com.serasaexperian.pessoa.services.ScoreService;
+import com.serasaexperian.pessoa.dto.request.ScoreRequestDto;
+import com.serasaexperian.pessoa.service.ScoreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.serasaexperian.pessoa.dtos.response;
+package com.serasaexperian.pessoa.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

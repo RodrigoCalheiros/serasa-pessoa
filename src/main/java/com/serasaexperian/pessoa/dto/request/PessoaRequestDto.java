@@ -1,4 +1,4 @@
-package com.serasaexperian.pessoa.dtos.request;
+package com.serasaexperian.pessoa.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

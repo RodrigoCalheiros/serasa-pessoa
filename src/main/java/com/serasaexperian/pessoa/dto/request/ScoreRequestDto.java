@@ -1,4 +1,4 @@
-package com.serasaexperian.pessoa.dtos.request;
+package com.serasaexperian.pessoa.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

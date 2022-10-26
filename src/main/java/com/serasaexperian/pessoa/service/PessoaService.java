@@ -1,11 +1,11 @@
-package com.serasaexperian.pessoa.services;
+package com.serasaexperian.pessoa.service;
 
-import com.serasaexperian.pessoa.dtos.request.PessoaRequestDto;
-import com.serasaexperian.pessoa.dtos.response.PessoaResponseDto;
+import com.serasaexperian.pessoa.dto.request.PessoaRequestDto;
+import com.serasaexperian.pessoa.dto.response.PessoaResponseDto;
 import com.serasaexperian.pessoa.models.AfinidadeModel;
 import com.serasaexperian.pessoa.models.PessoaModel;
 import com.serasaexperian.pessoa.models.ScoreModel;
-import com.serasaexperian.pessoa.repositories.PessoaRepository;
+import com.serasaexperian.pessoa.repository.PessoaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,7 +47,7 @@ public class PessoaService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Score não cadastrado.");
         }
 
-        Optional<AfinidadeModel> afinidadeModelOptional = afinidadeService.findByRegiao(pessoaRequestDto.getRegiao());
+        Optional<AfinidadeModel> afinidadeModelOptional = afinidadeService.findOneByRegiao(pessoaRequestDto.getRegiao());
         if (afinidadeModelOptional.isPresent()){
             pessoaModel.setAfinidade(afinidadeModelOptional.get());
         } else {

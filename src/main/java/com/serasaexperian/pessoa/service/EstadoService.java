@@ -1,7 +1,7 @@
-package com.serasaexperian.pessoa.services;
+package com.serasaexperian.pessoa.service;
 
 import com.serasaexperian.pessoa.models.EstadoModel;
-import com.serasaexperian.pessoa.repositories.EstadoRepository;
+import com.serasaexperian.pessoa.repository.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,10 @@
-package com.serasaexperian.pessoa.services;
+package com.serasaexperian.pessoa.service;
 
-import com.serasaexperian.pessoa.dtos.request.AfinidadeRequestDto;
-import com.serasaexperian.pessoa.dtos.response.AfinidadeResponseDto;
+import com.serasaexperian.pessoa.dto.request.AfinidadeRequestDto;
+import com.serasaexperian.pessoa.dto.response.AfinidadeResponseDto;
 import com.serasaexperian.pessoa.models.AfinidadeModel;
 import com.serasaexperian.pessoa.models.EstadoModel;
-import com.serasaexperian.pessoa.repositories.AfinidadeRepository;
+import com.serasaexperian.pessoa.repository.AfinidadeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +23,12 @@ public class AfinidadeService {
     @Autowired
     EstadoService estadoService;
 
+    public AfinidadeService(AfinidadeRepository afinidadeRepository, EstadoService estadoService) {
+        this.afinidadeRepository = afinidadeRepository;
+        this.estadoService = estadoService;
+    }
+
+
     public AfinidadeResponseDto save(final AfinidadeRequestDto afinidadeRequestDto) {
         AfinidadeModel afinidadeModel = new AfinidadeModel();
         BeanUtils.copyProperties(afinidadeRequestDto, afinidadeModel);
@@ -40,7 +46,7 @@ public class AfinidadeService {
         return modelToResponseDto(afinidadeRepository.save(afinidadeModel));
     }
 
-    public Optional<AfinidadeModel> findByRegiao(final String regiao){
+    public Optional<AfinidadeModel> findOneByRegiao(final String regiao){
         return afinidadeRepository.findOneByRegiao(regiao);
     }
 

@@ -1,8 +1,8 @@
-package com.serasaexperian.pessoa.controllers;
+package com.serasaexperian.pessoa.controller;
 
-import com.serasaexperian.pessoa.dtos.request.AfinidadeRequestDto;
-import com.serasaexperian.pessoa.services.AfinidadeService;
-import com.serasaexperian.pessoa.services.EstadoService;
+import com.serasaexperian.pessoa.dto.request.AfinidadeRequestDto;
+import com.serasaexperian.pessoa.service.AfinidadeService;
+import com.serasaexperian.pessoa.service.EstadoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
