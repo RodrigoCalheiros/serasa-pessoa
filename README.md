@@ -45,9 +45,9 @@ A base de dados pode ser acessada utilizando os seguintes parâmetros:
 
 ## Configuração de Ambiente
 
-Java 11
-Docker
-Maven
+    Java 11
+    Docker
+    Maven
 
 ## Criação da imagem docker
 
