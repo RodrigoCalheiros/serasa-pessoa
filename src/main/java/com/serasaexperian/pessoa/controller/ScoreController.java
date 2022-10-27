@@ -1,6 +1,7 @@
 package com.serasaexperian.pessoa.controller;
 
 import com.serasaexperian.pessoa.dto.request.ScoreRequestDto;
+import com.serasaexperian.pessoa.dto.response.ScoreResponseDto;
 import com.serasaexperian.pessoa.service.ScoreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class ScoreController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveScore(@RequestBody @Valid final ScoreRequestDto scoreRequestDto) {
+    public ResponseEntity<ScoreResponseDto> saveScore(@RequestBody @Valid final ScoreRequestDto scoreRequestDto) {
         if (scoreRequestDto.getRangeInicial() >= scoreRequestDto.getRangeFinal()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor inicial deve ser menor que o final");
         }

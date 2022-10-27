@@ -57,7 +57,7 @@ public class AfinidadeService {
     private AfinidadeResponseDto modelToResponseDto(final AfinidadeModel afinidadeModel){
         return AfinidadeResponseDto.builder()
                 .regiao(afinidadeModel.getRegiao())
-                .estados(afinidadeModel.getEstados().stream().map(estado -> estado.getSigla()).collect(Collectors.toList()))
+                .estados(afinidadeModel.getEstados().stream().map(EstadoModel::getSigla).collect(Collectors.toList()))
                 .build();
     }
 }

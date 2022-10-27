@@ -1,10 +1,9 @@
 package com.serasaexperian.pessoa.controller;
 
 import com.serasaexperian.pessoa.dto.request.AfinidadeRequestDto;
+import com.serasaexperian.pessoa.dto.response.AfinidadeResponseDto;
 import com.serasaexperian.pessoa.service.AfinidadeService;
 import com.serasaexperian.pessoa.service.EstadoService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,6 @@ import javax.validation.Valid;
 @RequestMapping("/api/afinidade")
 public class AfinidadeController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AfinidadeController.class);
-
     final AfinidadeService afinidadeService;
 
     final EstadoService estadoService;
@@ -28,8 +25,8 @@ public class AfinidadeController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveAfinidade(@RequestBody @Valid final AfinidadeRequestDto afinidadeRequestDto) {
-        if (afinidadeService.existsByRegiao(afinidadeRequestDto.getRegiao())){
+    public ResponseEntity<AfinidadeResponseDto> saveAfinidade(@RequestBody @Valid final AfinidadeRequestDto afinidadeRequestDto) {
+        if (Boolean.TRUE.equals(afinidadeService.existsByRegiao(afinidadeRequestDto.getRegiao()))){
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Afinidade com região já cadastrada");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(afinidadeService.save(afinidadeRequestDto));

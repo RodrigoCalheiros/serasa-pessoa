@@ -15,12 +15,10 @@ import java.util.List;
 @Builder
 public class AfinidadeRequestDto {
 
-    //TODO validação se a região já existe
     @NotBlank
     @Size(min=1, max = 20)
     private String regiao;
 
-    //TODO validação se estado não existente
     @NotEmpty
     @Size(min = 1)
     private List<String> estados = new ArrayList<>();

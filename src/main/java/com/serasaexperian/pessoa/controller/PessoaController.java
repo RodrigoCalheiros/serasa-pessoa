@@ -2,6 +2,7 @@ package com.serasaexperian.pessoa.controller;
 
 import com.serasaexperian.pessoa.dto.request.PessoaRequestDto;
 import com.serasaexperian.pessoa.dto.response.PessoaResponseDto;
+import com.serasaexperian.pessoa.model.PessoaModel;
 import com.serasaexperian.pessoa.service.PessoaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class PessoaController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> savePessoa(@RequestBody @Valid final PessoaRequestDto pessoaRequestDto) {
+    public ResponseEntity<PessoaModel> savePessoa(@RequestBody @Valid final PessoaRequestDto pessoaRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.save(pessoaRequestDto));
     }
 
@@ -38,11 +39,11 @@ public class PessoaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getPessoa(@PathVariable(value = "id") final UUID id) {
-        Optional<PessoaResponseDto> pessoaModelOptional = pessoaService.findById(id);
-        if (!pessoaModelOptional.isPresent()) {
+    public ResponseEntity<PessoaResponseDto> getPessoa(@PathVariable(value = "id") final UUID id) {
+        Optional<PessoaResponseDto> pessoaResponseDtoOptional = pessoaService.findById(id);
+        if (!pessoaResponseDtoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(pessoaModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body(pessoaResponseDtoOptional.get());
     }
 }

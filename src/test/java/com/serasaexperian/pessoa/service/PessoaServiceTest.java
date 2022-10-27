@@ -1,6 +1,7 @@
 package com.serasaexperian.pessoa.service;
 
 
+import com.serasaexperian.pessoa.dto.request.AfinidadeRequestDto;
 import com.serasaexperian.pessoa.dto.request.PessoaRequestDto;
 import com.serasaexperian.pessoa.dto.response.PessoaResponseDto;
 import com.serasaexperian.pessoa.model.AfinidadeModel;
@@ -11,6 +12,7 @@ import com.serasaexperian.pessoa.repository.PessoaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -29,7 +31,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class PessoaServiceTest {
+class PessoaServiceTest {
     @Mock
     private PessoaRepository repository;
     @Mock
@@ -128,19 +130,22 @@ public class PessoaServiceTest {
     void saveErrorScoreNaoCadastrado() {
         when(scoreService.findOneByScoreRange(anyInt())).thenReturn(Optional.empty());
 
-        ResponseStatusException responseStatusException = assertThrows(ResponseStatusException.class, () -> {
-            pessoaService.save(PessoaRequestDto.builder()
-                    .nome(this.nome)
-                    .telefone(this.telefone)
-                    .idade(this.idade)
-                    .cidade(this.cidade)
-                    .estado(this.estado)
-                    .score(this.score)
-                    .regiao(this.regiao)
-                    .build());;
-        });
-        assertEquals(responseStatusException.getStatus(), HttpStatus.CONFLICT);
-        assertEquals(responseStatusException.getReason(), "Score não cadastrado.");
+        PessoaRequestDto pessoaRequestDto = PessoaRequestDto.builder()
+                .nome(this.nome)
+                .telefone(this.telefone)
+                .idade(this.idade)
+                .cidade(this.cidade)
+                .estado(this.estado)
+                .score(this.score)
+                .regiao(this.regiao)
+                .build();
+        try{
+            pessoaService.save(pessoaRequestDto);
+            fail("Excepted");
+        } catch (ResponseStatusException responseStatusException){
+            assertEquals(HttpStatus.CONFLICT, responseStatusException.getStatus());
+            assertEquals("Score não cadastrado.", responseStatusException.getReason());
+        }
     }
 
     @Test
@@ -148,19 +153,22 @@ public class PessoaServiceTest {
         when(scoreService.findOneByScoreRange(anyInt())).thenReturn(Optional.of(this.scoreModel));
         when(afinidadeService.findOneByRegiao(anyString())).thenReturn(Optional.empty());
 
-        ResponseStatusException responseStatusException = assertThrows(ResponseStatusException.class, () -> {
-            pessoaService.save(PessoaRequestDto.builder()
-                    .nome(this.nome)
-                    .telefone(this.telefone)
-                    .idade(this.idade)
-                    .cidade(this.cidade)
-                    .estado(this.estado)
-                    .score(this.score)
-                    .regiao(this.regiao)
-                    .build());;
-        });
-        assertEquals(responseStatusException.getStatus(), HttpStatus.CONFLICT);
-        assertEquals(responseStatusException.getReason(), "Região não cadastrada.");
+        PessoaRequestDto pessoaRequestDto = PessoaRequestDto.builder()
+                .nome(this.nome)
+                .telefone(this.telefone)
+                .idade(this.idade)
+                .cidade(this.cidade)
+                .estado(this.estado)
+                .score(this.score)
+                .regiao(this.regiao)
+                .build();
+        try{
+            pessoaService.save(pessoaRequestDto);
+            fail("Excepted");
+        } catch (ResponseStatusException responseStatusException){
+            assertEquals(HttpStatus.CONFLICT, responseStatusException.getStatus());
+            assertEquals("Região não cadastrada.", responseStatusException.getReason());
+        }
     }
 
     @Test

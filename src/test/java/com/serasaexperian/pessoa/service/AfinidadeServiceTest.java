@@ -26,7 +26,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class AfinidadeServiceTest {
+class AfinidadeServiceTest {
+
     @Mock
     private AfinidadeRepository repository;
     @Mock
@@ -71,12 +72,17 @@ public class AfinidadeServiceTest {
     @Test
     void saveErrorEstadoNaoCadastrado() {
         when(estadoService.findOneBySigla(anyString())).thenReturn(Optional.empty());
-
-        ResponseStatusException responseStatusException = assertThrows(ResponseStatusException.class, () -> {
-            afinidadeService.save(AfinidadeRequestDto.builder().regiao(this.regiao).estados(this.estados).build());
-        });
-        assertEquals(responseStatusException.getStatus(), HttpStatus.CONFLICT);
-        assertEquals(responseStatusException.getReason(), String.format("Estado '%s' não cadastrado", this.sigla));
+        AfinidadeRequestDto afinidadeRequestDto = AfinidadeRequestDto.builder()
+                .regiao(this.regiao)
+                .estados(this.estados)
+                .build();
+        try{
+            afinidadeService.save(afinidadeRequestDto);
+            fail("Excepted");
+        } catch (ResponseStatusException responseStatusException){
+            assertEquals(HttpStatus.CONFLICT, responseStatusException.getStatus());
+            assertEquals(String.format("Estado '%s' não cadastrado", this.sigla), responseStatusException.getReason());
+        }
     }
 
     @Test

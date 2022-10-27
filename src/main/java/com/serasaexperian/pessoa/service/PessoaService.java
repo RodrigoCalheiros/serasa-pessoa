@@ -3,6 +3,7 @@ package com.serasaexperian.pessoa.service;
 import com.serasaexperian.pessoa.dto.request.PessoaRequestDto;
 import com.serasaexperian.pessoa.dto.response.PessoaResponseDto;
 import com.serasaexperian.pessoa.model.AfinidadeModel;
+import com.serasaexperian.pessoa.model.EstadoModel;
 import com.serasaexperian.pessoa.model.PessoaModel;
 import com.serasaexperian.pessoa.model.ScoreModel;
 import com.serasaexperian.pessoa.repository.PessoaRepository;
@@ -61,7 +62,7 @@ public class PessoaService {
                 pessoaModel.setTelefone(null);
                 pessoaModel.setIdade(null);
         });
-        return allPessoasModel.stream().map(pessoaModel -> modelToResponseDto(pessoaModel)).collect(Collectors.toList());
+        return allPessoasModel.stream().map(this::modelToResponseDto).collect(Collectors.toList());
     }
 
     public Optional<PessoaResponseDto> findById(final UUID id) {
@@ -82,9 +83,8 @@ public class PessoaService {
                 .cidade(pessoaModel.getCidade())
                 .estado(pessoaModel.getEstado())
                 .scoreDescricao(pessoaModel.getScore().getDescricao())
-                .estados(pessoaModel.getAfinidade().getEstados().stream().map(
-                        estado -> estado.getSigla()
-                    ).collect(Collectors.toList())
+                .estados(pessoaModel.getAfinidade().getEstados().stream()
+                        .map(EstadoModel::getSigla).collect(Collectors.toList())
                 ).build();
     }
 
