@@ -9,7 +9,7 @@ Todos os end points podem ser acessados utilizando a collection disponível no d
 Para acesso a API é necessário no primeiro momento a geração token. Em um cenário real, o token deve ser obtido por um
 serviço apartado dedicado a gestão de autenticação.
 
-Para obtenção do token válido foi disponibilizado o end point `/api/token` utilizando os seguintes parâmetros:
+É possível obter um token válido seguindo os seguintes parâmetros:
 
     POST /api/token
     Authorization
