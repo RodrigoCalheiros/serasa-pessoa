@@ -43,6 +43,12 @@ A base de dados pode ser acessada utilizando os seguintes parâmetros:
     Username: user
     Password: 1234
 
+## Configuração de Ambiente
+
+Java 11
+Docker
+Maven
+
 ## Criação da imagem docker
 
 Compilar a aplicação para gerar o jar: `mvn clean install`
