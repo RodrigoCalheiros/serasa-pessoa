@@ -55,7 +55,7 @@ Compilar a aplicação para gerar o jar: `mvn clean install`
 
 Criar a imagem: `docker build -t serasa-pessoa:latest .`
 
-Subir o container: `docker run -p 8080:8080 serasa-pessoa`
+Subir o container: `docker run -p 8080:8080 --rm serasa-pessoa`
 
 ## Geração dos arquivos private_key.der e public_key.der
 
