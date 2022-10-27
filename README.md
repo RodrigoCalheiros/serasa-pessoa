@@ -43,17 +43,24 @@ A base de dados pode ser acessada utilizando os seguintes parâmetros:
     Username: user
     Password: 1234
 
+## Configuração de Ambiente
+
+    Java 11
+    Docker
+    Maven
+
 ## Criação da imagem docker
 
 Compilar a aplicação para gerar o jar: `mvn clean install`
 
 Criar a imagem: `docker build -t serasa-pessoa:latest .`
 
-Subir o container: `docker run -p 8080:8080 serasa-pessoa`
+Subir o container: `docker run -p 8080:8080 --rm serasa-pessoa`
 
 ## Geração dos arquivos private_key.der e public_key.der
 
-Para a geração e validação do token é necessário ter configurado as 
+Para a geração e validação do token de autenticação é necesário as chaves privateKey e publicKey. Apesar de entender que isso não recomendado em um caso real, foi disponibilizado no repositório os arquivos.
+
 <pre>
 <code>
 openssl genrsa -out private_key.pem 2048
