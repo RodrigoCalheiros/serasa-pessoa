@@ -4,7 +4,7 @@ Um serviço do tipo API REST para cadastro de pessoas com score e suas regiões 
 
 ## EndPoints
 
-Todos os end points podem ser acessados utilizando a collection disponível no diretório `/resource/serasa-pessoa.collection`
+Todos os end points podem ser acessados utilizando a collection disponível no diretório `/resources/serasa-pessoa.postman_collection.json`
 
 Para acesso a API é necessário no primeiro momento a geração token. Em um cenário real, o token deve ser obtido por um
 serviço apartado dedicado a gestão de autenticação.
