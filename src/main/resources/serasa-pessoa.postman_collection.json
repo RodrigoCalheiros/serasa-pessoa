@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "8579088c-716e-4011-9799-38527b189a25",
+		"name": "serasa-pessoa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "637775"
+	},
+	"item": [
+		{
+			"name": "Get Pessoa",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoic2VyYXNhIiwiZXhwIjoxNjY2ODg3ODQwLCJpYXQiOjE2NjY4ODY5NDAsInNjb3BlIjoiYWRtaW4ifQ.ThtjVNmD0oVM1fLGVAmysX6a36320q1n8UizK1Bu34ez2RpOnJQ77UolwT_MHja9zwm78AplNmMTHmRFVPQg59F5NNsEdqpkqFIM7bBszY5jgoG9lLtoXkXFgaLokH6vo19ZQydz8EYQLOo66ruxOvElxPRes0SEDtXy8HnULmMjf6kh9TCyz5t4irTcP-5d2g-GQGxE2vDBCPPrHSmrEBY3UOb0KY2coi68Igf6jPrxF_xQuJfCctlKFlTA1dU6Gmq5dvM0mqgh_hBSWvMQNH2n__TF8lhx0mWPPxvhDHlbBzcKe85pmrTtTC-kTwjHW7lLY4XzUcL4kzBniW69XA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/pessoa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pessoa Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoic2VyYXNhIiwiZXhwIjoxNjY2ODg3ODQwLCJpYXQiOjE2NjY4ODY5NDAsInNjb3BlIjoiYWRtaW4ifQ.ThtjVNmD0oVM1fLGVAmysX6a36320q1n8UizK1Bu34ez2RpOnJQ77UolwT_MHja9zwm78AplNmMTHmRFVPQg59F5NNsEdqpkqFIM7bBszY5jgoG9lLtoXkXFgaLokH6vo19ZQydz8EYQLOo66ruxOvElxPRes0SEDtXy8HnULmMjf6kh9TCyz5t4irTcP-5d2g-GQGxE2vDBCPPrHSmrEBY3UOb0KY2coi68Igf6jPrxF_xQuJfCctlKFlTA1dU6Gmq5dvM0mqgh_hBSWvMQNH2n__TF8lhx0mWPPxvhDHlbBzcKe85pmrTtTC-kTwjHW7lLY4XzUcL4kzBniW69XA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/pessoa/a681ec77-3124-417d-9dd4-1494150982e",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pessoa",
+						"a681ec77-3124-417d-9dd4-1494150982e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Pessoa",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoic2VyYXNhIiwiZXhwIjoxNjY2ODg3ODQwLCJpYXQiOjE2NjY4ODY5NDAsInNjb3BlIjoiYWRtaW4ifQ.ThtjVNmD0oVM1fLGVAmysX6a36320q1n8UizK1Bu34ez2RpOnJQ77UolwT_MHja9zwm78AplNmMTHmRFVPQg59F5NNsEdqpkqFIM7bBszY5jgoG9lLtoXkXFgaLokH6vo19ZQydz8EYQLOo66ruxOvElxPRes0SEDtXy8HnULmMjf6kh9TCyz5t4irTcP-5d2g-GQGxE2vDBCPPrHSmrEBY3UOb0KY2coi68Igf6jPrxF_xQuJfCctlKFlTA1dU6Gmq5dvM0mqgh_hBSWvMQNH2n__TF8lhx0mWPPxvhDHlbBzcKe85pmrTtTC-kTwjHW7lLY4XzUcL4kzBniW69XA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Fulano de Tal\",\r\n    \"telefone\": \"99 99999-9999\",\r\n    \"idade\": 99,\r\n    \"cidade\": \"Cidade de Fulano\",\r\n    \"estado\": \"SE\",\r\n    \"score\": 1000,\r\n    \"regiao\": \"sudeste\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/pessoa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Afinidade",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoic2VyYXNhIiwiZXhwIjoxNjY2ODg3ODQwLCJpYXQiOjE2NjY4ODY5NDAsInNjb3BlIjoiYWRtaW4ifQ.ThtjVNmD0oVM1fLGVAmysX6a36320q1n8UizK1Bu34ez2RpOnJQ77UolwT_MHja9zwm78AplNmMTHmRFVPQg59F5NNsEdqpkqFIM7bBszY5jgoG9lLtoXkXFgaLokH6vo19ZQydz8EYQLOo66ruxOvElxPRes0SEDtXy8HnULmMjf6kh9TCyz5t4irTcP-5d2g-GQGxE2vDBCPPrHSmrEBY3UOb0KY2coi68Igf6jPrxF_xQuJfCctlKFlTA1dU6Gmq5dvM0mqgh_hBSWvMQNH2n__TF8lhx0mWPPxvhDHlbBzcKe85pmrTtTC-kTwjHW7lLY4XzUcL4kzBniW69XA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"regiao\": \"sudeste\",\r\n    \"estados\": [\r\n        \"SP\",\r\n        \"RJ\",\r\n        \"MG\",\r\n        \"ES\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/afinidade",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"afinidade"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Score",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoic2VyYXNhIiwiZXhwIjoxNjY2ODg3ODQwLCJpYXQiOjE2NjY4ODY5NDAsInNjb3BlIjoiYWRtaW4ifQ.ThtjVNmD0oVM1fLGVAmysX6a36320q1n8UizK1Bu34ez2RpOnJQ77UolwT_MHja9zwm78AplNmMTHmRFVPQg59F5NNsEdqpkqFIM7bBszY5jgoG9lLtoXkXFgaLokH6vo19ZQydz8EYQLOo66ruxOvElxPRes0SEDtXy8HnULmMjf6kh9TCyz5t4irTcP-5d2g-GQGxE2vDBCPPrHSmrEBY3UOb0KY2coi68Igf6jPrxF_xQuJfCctlKFlTA1dU6Gmq5dvM0mqgh_hBSWvMQNH2n__TF8lhx0mWPPxvhDHlbBzcKe85pmrTtTC-kTwjHW7lLY4XzUcL4kzBniW69XA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"scoreDescricao\": \"Recomendável\",\r\n    \"inicial\": 701,\r\n    \"final\": 1000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/score",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"score"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "serasa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
